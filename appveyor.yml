@@ -2,12 +2,12 @@
 #      environment configuration  #
 #---------------------------------#
 version: 1.6.{build}.0
+image: Visual Studio 2017
 install:
     - git clone https://github.com/PowerShell/DscResource.Tests
-
-    - ps: |
-        Import-Module -Name "$env:APPVEYOR_BUILD_FOLDER\DscResource.Tests\AppVeyor.psm1"
-        Invoke-AppveyorInstallTask
+    - ps: Write-Verbose -Message "PowerShell version $($PSVersionTable.PSVersion)" -Verbose
+    - ps: Import-Module -Name "$env:APPVEYOR_BUILD_FOLDER\DscResource.Tests\AppVeyor.psm1"
+    - ps: Invoke-AppveyorInstallTask
 
 #---------------------------------#
 #      build configuration        #

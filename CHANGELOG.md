@@ -20,6 +20,7 @@
     - Get-ObjectNotFoundException
     - Get-InvalidResultException.
   - Updated year to 2017 in license file and module manifest ([issue #131](https://github.com/PowerShell/xFailOverCluster/issues/131)).
+  - Now using Windows Server 2016 as the AppVeyor build worker to run tests.
 - Changes to xClusterDisk
   - Enabled localization for all strings ([issue #84](https://github.com/PowerShell/xFailOverCluster/issues/84)).
   - Fixed the OutputType data type that was not fully qualified.
