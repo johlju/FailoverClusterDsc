@@ -61,6 +61,7 @@
   - Enabled localization for all strings ([issue #86](https://github.com/PowerShell/xFailOverCluster/issues/86)).
   - Fixed typo in the returned hash table from Get-TargetResource.
 
+
 ## 1.7.0.0
 
 - Changes to xClusterPreferredOwner
