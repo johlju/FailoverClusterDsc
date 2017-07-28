@@ -6,6 +6,11 @@ image: Visual Studio 2017
 install:
     - git clone https://github.com/PowerShell/DscResource.Tests
     - ps: Write-Verbose -Message "PowerShell version $($PSVersionTable.PSVersion)" -Verbose
+    - ps: Write-Verbose "Start pulling windowsservercore image at $(Get-Date -Format 'yyyy-MM-dd hh:mm:ss')" -Verbose
+    - ps: docker version
+    - ps: docker images
+    - ps: docker pull microsoft/windowsservercore
+    - ps: Write-Verbose "Finished pulling windowsservercore image at $(Get-Date -Format 'yyyy-MM-dd hh:mm:ss')" -Verbose
     - ps: Import-Module -Name "$env:APPVEYOR_BUILD_FOLDER\DscResource.Tests\AppVeyor.psm1"
     - ps: Invoke-AppveyorInstallTask
 
