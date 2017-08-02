@@ -8,6 +8,7 @@ install:
     - git clone https://github.com/PowerShell/DscResource.Tests
 
     - ps: |
+        Write-Verbose -Message $env:TestMyvar -Verbose
         Import-Module -Name "$env:APPVEYOR_BUILD_FOLDER\DscResource.Tests\AppVeyor.psm1"
         Invoke-AppveyorInstallTask
 
