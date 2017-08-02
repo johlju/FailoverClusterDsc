@@ -6,9 +6,10 @@ install:
     - git clone https://github.com/johlju/DscResource.Tests
     - ps: Push-Location
     - ps: cd "$env:APPVEYOR_BUILD_FOLDER\DscResource.Tests"
-    - git checkout fix-markdown-test
+    - git checkout add-braces-customrule
     - ps: Pop-Location
     - ps: |
+        Write-Verbose -Message $env:TestMyvar -Verbose
         Import-Module -Name "$env:APPVEYOR_BUILD_FOLDER\DscResource.Tests\AppVeyor.psm1"
         Invoke-AppveyorInstallTask
 

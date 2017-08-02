@@ -409,3 +409,98 @@ function Close-UserToken
         New-InvalidOperationException -Message $errorMessage
     }
 }
+
+function Get-Something {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    Param
+    (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Variable1,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Variable2,
+
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Variable3,
+
+        [parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Variable4,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Variable5,
+
+        [Parameter(Mandatory = $false)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Variable6
+    )
+
+    if ( $true ) {
+        Write-Verbose 'Hello' -Verbose
+    }
+
+    if ( $true )
+    {
+        Write-Verbose 'Hello again' -Verbose
+    }
+
+    if ( $true )
+    { Write-Verbose 'Hello for the third tme' -Verbose
+    }
+
+    if ( $true )
+    {
+
+        Write-Verbose 'Hello for the fourth tme' -Verbose
+    }
+}
+
+function Get-SomethingElse
+{   [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    Param
+    (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Variable1
+    )
+
+
+    if ( $true )
+    {
+        Write-Verbose 'Hello again' -Verbose
+    }
+
+}
+
+function Get-SomethingThird
+{
+
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    Param
+    (
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Variable1
+    )
+
+
+    if ( $true )
+    {
+        Write-Verbose 'Hello again' -Verbose
+    }
+
+}
