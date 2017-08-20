@@ -3,10 +3,10 @@
 #---------------------------------#
 version: 1.6.{build}.0
 install:
-    - git clone https://github.com/johlju/DscResource.Tests
+    - git clone https://github.com/indented-automation/DscResource.Tests
     - ps: Push-Location
     - ps: cd "$env:APPVEYOR_BUILD_FOLDER\DscResource.Tests"
-    - git checkout ordered-tests-2
+    - git checkout dev
     - ps: Pop-Location
     - ps: |
         Import-Module -Name "$env:APPVEYOR_BUILD_FOLDER\DscResource.Tests\AppVeyor.psm1"
