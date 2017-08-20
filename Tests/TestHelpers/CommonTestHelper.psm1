@@ -278,7 +278,7 @@ function Get-Something {
     }
 
     switch ($value) {
-        1 { ''one'' }
+        1 { 'one' }
     }
 }
 
