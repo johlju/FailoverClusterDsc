@@ -420,22 +420,22 @@ function Get-Something {
         [System.String]
         $Variable1,
 
-        [Parameter(Mandatory=$true)]
+        [Parameter()]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $Variable2,
 
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $Variable3,
 
-        [parameter(Mandatory=$true)]
+        [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $Variable4,
 
-        [Parameter()]
+        [parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $Variable5,
@@ -443,64 +443,15 @@ function Get-Something {
         [Parameter(Mandatory = $false)]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        $Variable6
-    )
+        $Variable6,
 
-    if ( $true ) {
-        Write-Verbose 'Hello' -Verbose
-    }
+        [ValidateNotNullOrEmpty()]
+        [Parameter()]
+        [System.String]
+        $Variable7,
 
-    if ( $true )
-    {
-        Write-Verbose 'Hello again' -Verbose
-    }
-
-    if ( $true )
-    { Write-Verbose 'Hello for the third tme' -Verbose
-    }
-
-    if ( $true )
-    {
-
-        Write-Verbose 'Hello for the fourth tme' -Verbose
-    }
-}
-
-function Get-SomethingElse
-{   [CmdletBinding()]
-    [OutputType([System.Boolean])]
-    Param
-    (
-        [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        $Variable1
+        $Variable8
     )
-
-
-    if ( $true )
-    {
-        Write-Verbose 'Hello again' -Verbose
-    }
-
-}
-
-function Get-SomethingThird
-{
-
-    [CmdletBinding()]
-    [OutputType([System.Boolean])]
-    Param
-    (
-        [ValidateNotNullOrEmpty()]
-        [System.String]
-        $Variable1
-    )
-
-
-    if ( $true )
-    {
-        Write-Verbose 'Hello again' -Verbose
-    }
-
 }
