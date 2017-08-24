@@ -455,3 +455,279 @@ function Get-Something {
         $Variable8
     )
 }
+
+function Get-Something2 {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Variable1
+    )
+
+    return $true
+}
+
+function Get-Something3
+{   [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Variable1
+    )
+
+    return $true
+}
+
+function Get-Something4
+{
+
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Variable1
+    )
+
+    return $true
+}
+
+function Get-Something5
+{
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Variable1
+    )
+
+    if ($true) {
+    }
+
+    if ($true)
+    { return $true
+    }
+
+    if ($true)
+    {
+
+        return $true
+    }
+
+    if ($true)
+    {
+    }
+
+    $myArray = @()
+    foreach ($stringText in $myArray) {
+    }
+
+    $myArray = @()
+    foreach ($stringText in $myArray)
+    {   $stringText
+    }
+
+    $myArray = @()
+    foreach ($stringText in $myArray)
+    {
+
+        $stringText
+    }
+
+    $myArray = @()
+    foreach ($stringText in $myArray)
+    {
+    }
+
+    $i = 0
+    do {
+        $i++
+    } until ($i -eq 2)
+
+    $i = 0
+    do
+    { $i++
+    } until ($i -eq 2)
+
+    $i = 0
+    do
+    {
+
+        $i++
+    } until ($i -eq 2)
+
+    $i = 0
+    do
+    {
+        $i++
+    } until ($i -eq 2)
+
+    $i = 10
+    do {
+        $i--
+    } while ($i -gt 0)
+
+    $i = 10
+    do
+    { $i--
+    } while ($i -gt 0)
+
+    $i = 10
+    do
+    {
+
+        $i--
+    } while ($i -gt 0)
+
+    $i = 10
+    do
+    {
+        $i--
+    } while ($i -gt 0)
+
+    $i = 10
+    while ($i -gt 0) {
+        $i--
+    }
+
+    $i = 10
+    while ($i -gt 0)
+    { $i--
+    }
+
+    $i = 10
+    while ($i -gt 0)
+    {
+
+        $i--
+    }
+
+    $i = 10
+    while ($i -gt 0)
+    {
+        $i--
+    }
+
+    $value = 1
+    switch ($value) {
+        1
+        {
+            'one'
+        }
+    }
+
+    $value = 1
+    switch ($value) {
+        1 { 'one' }
+    }
+
+    $value = 1
+    switch ($value)
+    {   1
+        {
+            'one'
+        }
+    }
+
+    $value = 1
+    switch ($value)
+    {
+
+        1
+        {
+            'one'
+        }
+    }
+
+    $value = 1
+    switch ($value)
+    {
+        1
+        {
+            'one'
+        }
+    }
+
+    try {
+        $value = 1
+    }
+    catch
+    {
+        throw
+    }
+
+    try
+    { $value = 1
+    }
+    catch
+    {
+        throw
+    }
+
+    try
+    {
+
+        $value = 1
+    }
+    catch
+    {
+        throw
+    }
+
+    try
+    {
+        $value = 1
+    }
+    catch
+    {
+        throw
+    }
+
+    try
+    {
+        $value = 1
+    }
+    catch {
+        throw
+    }
+
+    try
+    {
+        $value = 1
+    }
+    catch
+    { throw
+    }
+
+    try
+    {
+        $value = 1
+    }
+    catch
+    {
+
+        throw
+    }
+
+    try
+    {
+        $value = 1
+    }
+    catch
+    {
+        throw
+    }
+
+    return $true
+}
