@@ -476,7 +476,7 @@ try
                     Context 'When target node is Windows Server 2016 and newer' {
                         BeforeEach {
                             $mockDynamicQuorumType = $mockQuorumType_Majority
-                            $mockDynamicExpectedQuorumType = $mockQuorumType_NodeAndCloudMajority
+                            $mockDynamicExpectedQuorumType = $mockQuorumType_NodeAndFileShareMajority
 
                             $mockTestParameters['Type'] = $mockQuorumType_NodeAndCloudMajority
                             $mockTestParameters['Resource'] = $mockQuorumAccountName
