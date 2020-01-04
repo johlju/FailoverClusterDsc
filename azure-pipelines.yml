@@ -100,9 +100,6 @@ stages:
               PathtoPublish: 'output/'
               ArtifactName: 'test_output'
               publishLocation: 'Container'
-          - script: |
-              bash <(curl -s https://codecov.io/bash)
-            displayName: 'Upload to codecov.io'
 
       - job: Upload_Codecov
         dependsOn: Test_Unit
