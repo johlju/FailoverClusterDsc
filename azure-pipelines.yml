@@ -114,7 +114,7 @@ stages:
               artifactName: 'testResults'
               downloadPath: '$(Build.SourcesDirectory)/output'
           - script: |
-              bash <(curl -s https://codecov.io/bash) -f "/output/testResults/Codecov*.xml"
+              bash <(curl -s https://codecov.io/bash) -f "./output/testResults/Codecov*.xml"
             displayName: 'Upload to codecov.io'
 
       - job: Test_Integration
