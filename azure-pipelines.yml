@@ -95,6 +95,9 @@ stages:
               codeCoverageTool: 'JaCoCo'
               summaryFileLocation: 'output/testResults/CodeCov*.xml'
               pathToSources: '$(Build.SourcesDirectory)/output/$(DscBuildVariable.RepositoryName)'
+          - script: |
+              bash <(curl -s https://codecov.io/bash)
+            displayName: 'Upload to codecov.io'
 
       - job: Test_Integration
         pool:
