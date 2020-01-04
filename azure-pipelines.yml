@@ -30,8 +30,8 @@ stages:
               ModuleVersion: $(GitVersion.Informationalversion)
           - task: PublishBuildArtifacts@1
             inputs:
-              PathtoPublish: 'output/'
-              ArtifactName: 'output'
+              pathToPublish: 'output/'
+              artifactName: 'output'
               publishLocation: 'Container'
 
   - stage: Test
@@ -97,8 +97,8 @@ stages:
               pathToSources: '$(Build.SourcesDirectory)/output/$(DscBuildVariable.RepositoryName)'
           - task: PublishBuildArtifacts@1
             inputs:
-              PathtoPublish: 'output/'
-              ArtifactName: 'test_output'
+              pathToPublish: 'output/testResults/'
+              artifactName: 'testResults'
               publishLocation: 'Container'
 
       - job: Upload_Codecov
@@ -111,7 +111,7 @@ stages:
             inputs:
               buildType: 'current'
               downloadType: 'single'
-              artifactName: 'test_output'
+              artifactName: 'testResults'
               downloadPath: '$(Build.SourcesDirectory)'
           - script: |
               bash <(curl -s https://codecov.io/bash)
