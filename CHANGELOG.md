@@ -18,6 +18,7 @@ For older change log history see the [historic changelog](HISTORIC_CHANGELOG.md)
   - Added a CONTRIBUTING.md.
   - Replaced module CommonResourceHelper with the PowerShell Gallery module
     DscResource.Common v0.2.0.
+  - DEBUG
 
 ### Changed
 

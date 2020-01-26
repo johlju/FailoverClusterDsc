@@ -93,7 +93,89 @@ stages:
             displayName: 'Run Unit Test'
             inputs:
               filePath: './build.ps1'
-              arguments: "-Tasks test -PesterScript 'tests/Unit'"
+              arguments: "-Tasks test -PesterScript @('tests/Unit/MSFT_xCluster.Tests.ps1','tests/Unit/MSFT_xClusterDisk.Tests.ps1','tests/Unit/MSFT_xClusterHelp.Tests.ps1') -PesterExcludeTag @('Helper')"
+              pwsh: false
+          - task: PublishTestResults@2
+            displayName: 'Publish Test Results'
+            condition: succeededOrFailed()
+            inputs:
+              testResultsFormat: 'NUnit'
+              testResultsFiles: 'output/testResults/NUnit*.xml'
+              testRunTitle: 'Unit (Windows Server Core)'
+          - task: PublishCodeCoverageResults@1
+            displayName: 'Publish Code Coverage'
+            condition: succeededOrFailed()
+            inputs:
+              codeCoverageTool: 'JaCoCo'
+              summaryFileLocation: 'output/testResults/CodeCov*.xml'
+              pathToSources: '$(Build.SourcesDirectory)/output/$(dscBuildVariable.RepositoryName)'
+
+      - job: Test_Unit_Helper
+        displayName: 'Unit (Helper)'
+        pool:
+          vmImage: 'win1803'
+        timeoutInMinutes: 0
+        steps:
+          - powershell: |
+              $repositoryOwner,$repositoryName = $env:BUILD_REPOSITORY_NAME -split '/'
+              echo "##vso[task.setvariable variable=RepositoryOwner;isOutput=true]$repositoryOwner"
+              echo "##vso[task.setvariable variable=RepositoryName;isOutput=true]$repositoryName"
+            name: dscBuildVariable
+            displayName: 'Set Environment Variables'
+          - task: DownloadBuildArtifacts@0
+            displayName: 'Download Build Artifact'
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'output'
+              downloadPath: '$(Build.SourcesDirectory)'
+          - task: PowerShell@2
+            name: test
+            displayName: 'Run Unit Test'
+            inputs:
+              filePath: './build.ps1'
+              arguments: "-Tasks test -PesterScript @('tests/Unit/MSFT_xCluster.Tests.ps1','tests/Unit/MSFT_xClusterDisk.Tests.ps1','tests/Unit/MSFT_xClusterHelp.Tests.ps1') -PesterTag @('Helper')"
+              pwsh: false
+          - task: PublishTestResults@2
+            displayName: 'Publish Test Results'
+            condition: succeededOrFailed()
+            inputs:
+              testResultsFormat: 'NUnit'
+              testResultsFiles: 'output/testResults/NUnit*.xml'
+              testRunTitle: 'Unit (Windows Server Core)'
+          - task: PublishCodeCoverageResults@1
+            displayName: 'Publish Code Coverage'
+            condition: succeededOrFailed()
+            inputs:
+              codeCoverageTool: 'JaCoCo'
+              summaryFileLocation: 'output/testResults/CodeCov*.xml'
+              pathToSources: '$(Build.SourcesDirectory)/output/$(dscBuildVariable.RepositoryName)'
+
+      - job: Test_Unit_Network
+        displayName: 'Unit (Network)'
+        pool:
+          vmImage: 'win1803'
+        timeoutInMinutes: 0
+        steps:
+          - powershell: |
+              $repositoryOwner,$repositoryName = $env:BUILD_REPOSITORY_NAME -split '/'
+              echo "##vso[task.setvariable variable=RepositoryOwner;isOutput=true]$repositoryOwner"
+              echo "##vso[task.setvariable variable=RepositoryName;isOutput=true]$repositoryName"
+            name: dscBuildVariable
+            displayName: 'Set Environment Variables'
+          - task: DownloadBuildArtifacts@0
+            displayName: 'Download Build Artifact'
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'output'
+              downloadPath: '$(Build.SourcesDirectory)'
+          - task: PowerShell@2
+            name: test
+            displayName: 'Run Unit Test'
+            inputs:
+              filePath: './build.ps1'
+              arguments: "-Tasks test -PesterScript @('tests/Unit/MSFT_xClusterNetwork.Tests.ps1')"
               pwsh: false
           - task: PublishTestResults@2
             displayName: 'Publish Test Results'

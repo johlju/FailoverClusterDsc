@@ -61,7 +61,7 @@ Pester:
     - tests/Unit
   ExcludeTag:
   Tag:
-  CodeCoverageThreshold: 85
+  CodeCoverageThreshold: 1
 
 DscTest:
   ExcludeTag:

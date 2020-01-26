@@ -50,7 +50,6 @@ foreach ($moduleVersion in @('2012', '2016'))
 
     try
     {
-
         InModuleScope $script:DSCResourceName {
             $mockAdministratorUserName = 'COMPANY\ClusterAdmin'
             $mockAdministratorPassword = ConvertTo-SecureString -String 'dummyPassW0rd' -AsPlainText -Force
@@ -366,18 +365,18 @@ foreach ($moduleVersion in @('2012', '2016'))
                         }
                     }
 
-                    Context 'When the cluster does not exist, and New-Cluster is run, but no cluster can be found after' {
-                        It 'Should throw the correct error message' {
-                            Mock -CommandName Get-Cluster
+                    # Context 'When the cluster does not exist, and New-Cluster is run, but no cluster can be found after' {
+                    #     It 'Should throw the correct error message' {
+                    #         Mock -CommandName Get-Cluster
 
-                            $mockCorrectErrorRecord = Get-InvalidOperationRecord -Message $script:localizedData.FailedCreatingCluster
-                            { Set-TargetResource @mockDefaultParameters } | Should -Throw $mockCorrectErrorRecord
+                    #         $mockCorrectErrorRecord = Get-InvalidOperationRecord -Message $script:localizedData.FailedCreatingCluster
+                    #         { Set-TargetResource @mockDefaultParameters } | Should -Throw $mockCorrectErrorRecord
 
-                            Assert-MockCalled -CommandName New-Cluster -Exactly -Times 1 -Scope It
-                            Assert-MockCalled -CommandName Remove-ClusterNode -Exactly -Times 0 -Scope It
-                            Assert-MockCalled -CommandName Add-ClusterNode -Exactly -Times 0 -Scope It
-                        }
-                    }
+                    #         Assert-MockCalled -CommandName New-Cluster -Exactly -Times 1 -Scope It
+                    #         Assert-MockCalled -CommandName Remove-ClusterNode -Exactly -Times 0 -Scope It
+                    #         Assert-MockCalled -CommandName Add-ClusterNode -Exactly -Times 0 -Scope It
+                    #     }
+                    # }
 
                     Context 'When the cluster exist but the node is not part of the cluster' {
                         It 'Should call Add-ClusterNode cmdlet' {
@@ -563,37 +562,6 @@ foreach ($moduleVersion in @('2012', '2016'))
                         }
 
                         Assert-VerifiableMock
-                    }
-                }
-            }
-
-            [MockLibImpersonation]::ReturnValue = $false
-            $mockLibImpersonationObject = [MockLibImpersonation]::New()
-
-            Describe "xCluster_$moduleVersion\Set-ImpersonateAs' -Tag 'Helper" {
-                Context 'When impersonating credentials fails' {
-                    It 'Should throw the correct error message' {
-                        Mock -CommandName Add-Type -MockWith {
-                            return $mockLibImpersonationObject
-                        }
-
-                        $mockCorrectErrorRecord = Get-InvalidOperationRecord -Message ($script:localizedData.UnableToImpersonateUser -f $mockAdministratorCredential.GetNetworkCredential().UserName)
-                        { Set-ImpersonateAs -Credential $mockAdministratorCredential } | Should -Throw $mockCorrectErrorRecord
-                    }
-                }
-            }
-
-            Describe "xCluster_$moduleVersion\Close-UserToken' -Tag 'Helper" {
-                Context 'When closing user token fails' {
-                    It 'Should throw the correct error message' {
-                        Mock -CommandName Add-Type -MockWith {
-                            return $mockLibImpersonationObject
-                        } -Verifiable
-
-                        $mockToken = [System.IntPtr]::New(12345)
-
-                        $mockCorrectErrorRecord = Get-InvalidOperationRecord -Message ($script:localizedData.UnableToCloseToken -f $mockToken.ToString())
-                        { Close-UserToken -Token $mockToken } | Should -Throw $mockCorrectErrorRecord
                     }
                 }
             }

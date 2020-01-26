@@ -68,14 +68,6 @@ the target node ($env:COMPUTERNAME) to the cluster.
 * **`[String]` DomainAdministratorCredential** _(Required)_: Credential used to
   create the failover cluster in Active Directory.
 
-#### Examples for xCluster
-
-* [Create first node of a failover cluster](/source/Examples/Resources/xCluster/1-xCluster_CreateFirstNodeOfAFailoverClusterConfig.ps1)
-* [Join additional node to a failover cluster](/source/Examples/Resources/xCluster/2-xCluster_JoinAdditionalNodeToFailoverClusterConfig.ps1)
-* [Create failover cluster with two nodes](/source/Examples/Resources/xCluster/3-xCluster_CreateFailoverClusterWithTwoNodesConfig.ps1)
-* [Create first node of a failover cluster and ignoring a network subnet](/source/Examples/Resources/xCluster/4-xCluster_CreateFailoverClusterAndIgnoreANetworkConfig.ps1)
-* [Create first node of a failover cluster with DHCP](/source/Examples/Resources/xCluster/5-xCluster_CreateFirstNodeOfAFailoverClusterWithDHCPConfig.ps1)
-* [Join additional node to a failover cluster with DHCP](/source/Examples/Resources/xCluster/6-xCluster_JoinAdditionalNodeToFailoverClusterWithDHCPConfig.ps1)
 
 ### xClusterDisk
 
@@ -93,11 +85,6 @@ Configures shared disks in a cluster.
   { *Present* | Absent }
 * **`[String]` Label** _(Write)_: The disk label that should be assigned to the
   disk on the Failover Cluster disk resource.
-
-#### Examples for xClusterDisk
-
-* [Add a cluster disk to the failover cluster](/source/Examples/Resources/xClusterDisk/1-xClusterDisk_AddClusterDiskConfig.ps1)
-* [Remove a cluster disk from the failover cluster](/source/Examples/Resources/xClusterDisk/2-xClusterDisk_RemoveClusterDiskConfig.ps1)
 
 ### xClusterNetwork
 
@@ -138,10 +125,6 @@ The cluster network role can be set to either the value 0, 1 or 3.
 See this article for more information about cluster network role values;
 [Configuring Windows Failover Cluster Networks](https://blogs.technet.microsoft.com/askcore/2014/02/19/configuring-windows-failover-cluster-networks/)
 
-#### Examples for xClusterNetwork
-
-* [Change properties of two cluster network resources in the failover cluster](/source/Examples/Resources/xClusterNetwork/1-xClusterNetwork_ChangeClusterNetworkConfig.ps1)
-
 ### xClusterPreferredOwner
 
 Configures preferred owners of a cluster group and cluster resources in a failover
@@ -160,11 +143,6 @@ cluster.
   owners on.
 * **`[String]` Ensure** _(Write)_: If the preferred owners should be present or
   absent. Default value is 'Present'. { *Present* | Absent }
-
-#### Examples for xClusterPreferredOwner
-
-* [Add preferred owners to a cluster group and cluster resources](/source/Examples/Resources/xClusterPreferredOwner/1-xClusterPreferredOwner_AddPreferredOwnerConfig.ps1)
-* [Remove preferred owners from a cluster group and cluster resources](/source/Examples/Resources/xClusterPreferredOwner/2-xClusterPreferredOwner_RemovePreferredOwnerConfig.ps1)
 
 ### xClusterProperty
 
@@ -225,10 +203,6 @@ Configures cluster properties on a failover cluster.
   after a system shutdown is initiated that the failover cluster service will
   wait for resources to go offline.
 
-#### Examples for xClusterProperty
-
-* [Set failover cluster properties](/source/Examples/Resources/xClusterProperty/1-xClusterProperty_SetClusterPropertiesConfig.ps1)
-
 ### xClusterQuorum
 
 Configures quorum in a cluster. For information on how to choose the correct
@@ -253,14 +227,6 @@ quorum type, please see the article
   type is set to NodeAndCloudMajority. The key is currently not updated if the
   resource is already set.
 
-#### Examples for xClusterQuorum
-
-* [Set quorum to node majority](/source/Examples/Resources/xClusterQuorum/1-xClusterQuorum_SetQuorumToNodeMajorityConfig.ps1)
-* [Set quorum to node and disk majority](/source/Examples/Resources/xClusterQuorum/2-xClusterQuorum_SetQuorumToNodeAndDiskMajorityConfig.ps1)
-* [Set quorum to node and file share majority](/source/Examples/Resources/xClusterQuorum/3-xClusterQuorum_SetQuorumToNodeAndFileShareMajorityConfig.ps1)
-* [Set quorum to disk only](/source/Examples/Resources/xClusterQuorum/4-xClusterQuorum_SetQuorumToDiskOnlyConfig.ps1)
-* [Set quorum to node and cloud](/source/Examples/Resources/xClusterQuorum/5-xClusterQuorum_SetQuorumToNodeAndCloudMajorityConfig.ps1)
-
 ### xWaitForCluster
 
 Ensures that a node waits for a remote cluster is created.
@@ -276,7 +242,3 @@ Ensures that a node waits for a remote cluster is created.
   existence. Default values is 10 seconds.
 * **`[UInt32]` RetryCount** _(Write)_: Maximum number of retries to check for
   cluster existence. Default value is 50 retries.
-
-#### Examples for xWaitForCluster
-
-* [Wait for failover cluster to be present](/source/Examples/Resources/xWaitForCluster/1-xWaitForCluster_WaitForFailoverClusterToBePresentConfig.ps1)
