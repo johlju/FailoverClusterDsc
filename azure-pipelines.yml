@@ -34,8 +34,8 @@ stages:
           - task: PublishBuildArtifacts@1
             displayName: 'Publish Build Artifact'
             inputs:
-              PathtoPublish: 'output/'
-              ArtifactName: 'output'
+              pathToPublish: 'output/'
+              artifactName: 'output'
               publishLocation: 'Container'
 
   - stage: Test
@@ -109,6 +109,13 @@ stages:
               codeCoverageTool: 'JaCoCo'
               summaryFileLocation: 'output/testResults/CodeCov*.xml'
               pathToSources: '$(Build.SourcesDirectory)/output/$(dscBuildVariable.RepositoryName)'
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Test Artifact'
+            inputs:
+              pathToPublish: 'output/testResults/'
+              artifactName: 'testResults1'
+              publishLocation: 'Container'
+
 
       - job: Test_Unit_Helper
         displayName: 'Unit (Helper)'
@@ -150,6 +157,12 @@ stages:
               codeCoverageTool: 'JaCoCo'
               summaryFileLocation: 'output/testResults/CodeCov*.xml'
               pathToSources: '$(Build.SourcesDirectory)/output/$(dscBuildVariable.RepositoryName)'
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Test Artifact'
+            inputs:
+              pathToPublish: 'output/testResults/'
+              artifactName: 'testResults2'
+              publishLocation: 'Container'
 
       - job: Test_Unit_Network
         displayName: 'Unit (Network)'
@@ -191,6 +204,12 @@ stages:
               codeCoverageTool: 'JaCoCo'
               summaryFileLocation: 'output/testResults/CodeCov*.xml'
               pathToSources: '$(Build.SourcesDirectory)/output/$(dscBuildVariable.RepositoryName)'
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Test Artifact'
+            inputs:
+              pathToPublish: 'output/testResults/'
+              artifactName: 'testResults3'
+              publishLocation: 'Container'
 
       - job: Test_Integration
         displayName: 'Integration'
