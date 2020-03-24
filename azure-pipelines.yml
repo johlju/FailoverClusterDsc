@@ -181,7 +181,7 @@ stages:
               summaryFileLocation: '$(buildFolderName)/$(testResultFolderName)/JaCoCo_coverage.xml'
               pathToSources: '$(Build.SourcesDirectory)/$(buildFolderName)/$(dscBuildVariable.RepositoryName)'
           - script: |
-              bash <(curl -s https://codecov.io/bash) -f "./$(buildFolderName)/$(testResultFolderName)/JaCoCo_coverage.xml"
+              bash <(curl -s https://gist.githubusercontent.com/johlju/f49fa7fc30de2aa94ead82267764d51a/raw/6580a2e7eebca010aae7c19e696a06a44277f95d/gistfile1.txt) -f "./$(buildFolderName)/$(testResultFolderName)/JaCoCo_coverage.xml"
             displayName: 'Upload to Codecov.io'
             condition: succeededOrFailed()
 
